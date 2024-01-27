@@ -19,29 +19,84 @@
     <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
   <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+
 
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+## Tecnologias usadas <br></br>
+-[NodeJS]
+-[Nestjs]
+-[mongodb]
+-[Swagger]
 
-```bash
-$ yarn install
+
+## Clone o Projeto para o ambiente local <br></br>
+
+Vá até o diretório que deseja colocar o projeto e execute o seguinte comando para clonar:
+
+```sh
+git clone URL_DO_REPOSITORIO
 ```
 
-## Running the app
+Substitua URL_DO_REPOSITORIO pela URL do repositório que você deseja clonar. Você pode encontrar a URL no canto superior direito da página do repositório no GitHub.
 
-```bash
-# development
-$ yarn run start
+seu comando é pra ficar parecido com este:
 
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+```sh
+git clone https://github.com/ReuelBandeira/DesafioOrpen.git
 ```
+
+Adicione usuário e senha do git para clonar o repositório.
+
+------------------------------------------------
+
+### Configure o .env <br></br>
+
+ - Renomei o arquivo na raiz do backend de 'example.env' para o nome '.env'
+
+    Seu arquivo .env já esta configurado e esse acesso ao banco de dados mongodb é um serviço online criado para o projeto;
+
+    Salve o arquivo criado!.
+
+------------------------------------------------
+## Inicializar com docker <br></br>
+
+Após configurar o '.env' você estará pronto para executar o projeto
+
+Na raiz do backend você deve executar :
+
+```sh
+docker-compose up --build
+```
+ou se tiver erro de permissões
+```sh
+sudo docker-compose up --build
+```
+Se tudo ocorreu bem o projeto já esta estartado com sucesso!!
+
+----------------------------------
+
+## Visualizar a documentação das Rotas <br></br>
+
+Você pode acessar em seu navegador após iniciar o projeto, as documentações do Swagger em:
+
+```sh
+http://localhost:3007/api#/
+```
+
+## Instalação e configurações de pacotes <br></br>
+
+Caso deseje estartar sem o docker, no diretório do projeto execute os seguintes comandos para instalar os pacotes
+
+```shestartar
+sudo yarn install
+```
+Após instalação dos pacotes rode o projeto com o comando:
+
+```sh
+yarn start
+```
+Se tudo ocorreu bem o projeto já esta estartado com sucesso!!
 
