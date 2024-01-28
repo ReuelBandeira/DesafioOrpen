@@ -21,16 +21,6 @@ export class OrpenService {
 
     async create(createOrpen: CreateOrpenDto) {
       try {
-        const plantExisted = await this.orpenRepository.find({
-          city:createOrpen.city,
-          country: createOrpen.country,
-          weatherData:createOrpen.weatherData
-        })
-
-        if (plantExisted.length!==0) {
-          ErrorHandler.CONFLICT_MESSAGE('This record already exists!')
-        }
-
         const result = await this.orpenRepository.create({
           ...createOrpen,
           _id: this.genId.id(),

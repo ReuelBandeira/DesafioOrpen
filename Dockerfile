@@ -1,20 +1,39 @@
-# Use the official Node.js image
-FROM node:14
+# Install and Build the Code.
+FROM node:18 AS builder
 
-# Cria o diretório de trabalho no contêiner
 WORKDIR /usr/src/app
 
-# Copia o package.json e package-lock.json para o diretório de trabalho
 COPY package*.json ./
 
-# Instala as dependências
+RUN npm install glob rimraf
+
 RUN npm install
 
-# Copia os arquivos restantes do projeto para o diretório de trabalho
 COPY . .
 
-# Expõe a porta definida no .env
-EXPOSE 3007
+RUN npm run build
 
-# Comando para iniciar o aplicativo
-CMD ["npm", "run", "start:prod"]
+# Development image
+FROM node:18-alpine AS development
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+COPY --from=builder /usr/src/app/node_modules ./node_modules
+
+# Production image
+FROM node:18-alpine as production
+
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install --omit=dev
+
+COPY --from=builder /usr/src/app/dist ./dist
+
+CMD ["node", "dist/main"]

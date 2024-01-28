@@ -34,36 +34,21 @@
 
 ## Clone o Projeto para o ambiente local <br></br>
 
-Vá até o diretório que deseja colocar o projeto e execute o seguinte comando para clonar:
-
-```sh
-git clone URL_DO_REPOSITORIO
-```
-
-Substitua URL_DO_REPOSITORIO pela URL do repositório que você deseja clonar. Você pode encontrar a URL no canto superior direito da página do repositório no GitHub.
-
-seu comando é pra ficar parecido com este:
+Para clonagem do projeto:
 
 ```sh
 git clone https://github.com/ReuelBandeira/DesafioOrpen.git
 ```
-
 Adicione usuário e senha do git para clonar o repositório.
 
 ------------------------------------------------
 
-### Configure o .env <br></br>
+### Sobre o .env <br></br>
 
- - Renomei o arquivo na raiz do backend de 'example.env' para o nome '.env'
-
-    Seu arquivo .env já esta configurado e esse acesso ao banco de dados mongodb é um serviço online criado para o projeto;
-
-    Salve o arquivo criado!.
+ -  Seu arquivo .env já esta configurado e esse acesso ao banco de dados mongodb é um serviço online criado para o projeto;
 
 ------------------------------------------------
 ## Inicializar com docker <br></br>
-
-Após configurar o '.env' você estará pronto para executar o projeto
 
 Na raiz do backend você deve executar :
 
@@ -74,6 +59,12 @@ ou se tiver erro de permissões
 ```sh
 sudo docker-compose up --build
 ```
+OBS:Se você está enfrentando problemas relacionados ao cache no Docker,pode utilizar esse comando para limpeza e refazer o passo anterior:
+
+```sh
+docker system prune --all --force --volumes
+```
+
 Se tudo ocorreu bem o projeto já esta estartado com sucesso!!
 
 ----------------------------------
