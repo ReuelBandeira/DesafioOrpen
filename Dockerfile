@@ -1,20 +1,21 @@
-# Use a imagem do Node como base
-FROM node:20-alpine
+# Install and Build the Code.
+FROM node:18 AS builder
 
-# Crie o diretório de trabalho
 WORKDIR /usr/src/app
 
-# Copie os arquivos de package.json e package-lock.json primeiro
 COPY package*.json ./
 
-# Instale as dependências
-RUN npm install --production
+RUN npm install
 
-# Copie o restante dos arquivos
 COPY . .
 
-# Exponha a porta necessária
-EXPOSE 3007
+RUN npm run build
 
-# Comando padrão para iniciar o aplicativo
-CMD ["node", "dist/main"]
+# Development image
+FROM node:18-alpine AS development
+
+WORKDIR /usr/src/app
+
+COPY --from=builder /usr/src/app .
+
+CMD ["npm", "run", "start:dev"]
