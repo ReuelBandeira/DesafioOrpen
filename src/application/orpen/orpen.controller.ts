@@ -29,10 +29,16 @@ export class OrpenController {
     @findApiDecorator()
     async findAll(@Headers() headers,@Res() res: Response) {
         try {
-            const city = headers.city;
-            const country = headers.country;
+            let city = headers.city;
+            let country = headers.country;
+            country = country.toUpperCase();
+            if (country.length !== 2 || country===null || country===undefined) {
+                ErrorHandler.NOT_FOUND_MESSAGE('Not found. To make the search more precise, enter the country with 2 letters (ISO3166).');
+            }
+            if (city.length === 0 || city===null || city===undefined) {
+                ErrorHandler.NOT_FOUND_MESSAGE('Enter a valid city name!.');
+            }
             const results = await this.orpenService.findAll(city,country);
-
             const createOrpen={
                 city:results.data[0].city,
                 country:results.data[0].country,

@@ -1,29 +1,32 @@
-import { HttpException, HttpStatus } from '@nestjs/common'
-import { Response } from 'express'
+import { HttpException, HttpStatus } from '@nestjs/common';
+import { Response } from 'express';
 
 export abstract class ErrorHandler {
-  static type: any
-  static entityReferenceError: any
+  static type: any;
+  static entityReferenceError: any;
+
   constructor() {
-    ErrorHandler.type = new.target.name
+    ErrorHandler.type = new.target.name;
     ErrorHandler.entityReferenceError = {
-      TrainingsController: 'pulley',
-    }
-  }
-  public static errorResponse(res: Response, error: HttpException) {
-    try {
-      throw error
-    } catch (error) {
-      return res.status(error.status).json({ message: error.message })
-    }
+      OrpenController: 'orpen',
+      // Adicione outras referências de entidade, se necessário
+    };
   }
 
-  public static response(res: Response, error: any) {
-    try {
-      return res.status(error.status).json({ error: error.message })
-    } catch (error) {
-      return res.status(500).json({ message: 'Internal Server Error' })
+  public static errorResponse(res: Response, error: any, customMessage?: string) {
+
+    let status;
+    let errorMessage;
+
+    if (error instanceof HttpException) {
+      status = error.getStatus();
+      errorMessage = error.message || HttpStatus[status] || 'Internal Server Error';
+    } else {
+      status = HttpStatus.INTERNAL_SERVER_ERROR;
+      errorMessage = customMessage || 'Internal Server Error';
     }
+
+    return res.status(status).json({ message: errorMessage });
   }
 
   public static handle(error: HttpException) {
@@ -175,4 +178,5 @@ export abstract class ErrorHandler {
   public static TOO_MANY_REQUESTS_MESSAGE(message: string) {
     throw new HttpException(message, HttpStatus.TOO_MANY_REQUESTS)
   }
+
 }

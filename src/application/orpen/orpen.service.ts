@@ -46,12 +46,15 @@ export class OrpenService {
 
   async findAll(city: string,country:string) {
     try {
-     
-      const apiUrl = `https://openweathermap.org/data/2.5/find?q=${city}&appid=439d4b804bc8187953eb36d2a8c26a02&units=metric&${country}`;
+
+      const apiUrl = `https://openweathermap.org/data/2.5/find?q=${city},${country}&appid=439d4b804bc8187953eb36d2a8c26a02&units=metric`;
 
       const apiResponse = await axios.get(apiUrl);
-
       const results = apiResponse.data;
+      
+      if (!results || results.length === 0 || results=== undefined || results=== null ) {
+        ErrorHandler.NOT_FOUND_MESSAGE('not found');
+      }
 
       const transformedResults = results.list.map((item: any) => {
         return {
@@ -67,7 +70,7 @@ export class OrpenService {
         };
       });
   
-      if (!transformedResults || transformedResults.length === 0) {
+      if (!transformedResults || transformedResults.length === 0 ) {
         ErrorHandler.NOT_FOUND_MESSAGE('not found');
       }
       return {
@@ -75,8 +78,9 @@ export class OrpenService {
         data: transformedResults,
         message: 'Consulta bem-sucedida',
       };
-    } catch (error) {
-      console.error('Erro na chamada à API:', error.message);
+    } catch {
+
+      ErrorHandler.NOT_FOUND_MESSAGE('Query not found! Provide other parameters!!');
 
       return {
         success: false,
