@@ -80,7 +80,7 @@ Se tudo ocorreu bem o projeto já esta estartado com sucesso!!
 http://localhost:3007/api#/
 ```
 
-## Visualizar a documentação das Rotas <br></br>
+## Testes das Rotas <br></br>
 
 ✔️ Sobre as rotas do backend,podem ser testadas pela aplicação Insomnia ou Postman
 
