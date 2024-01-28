@@ -79,37 +79,54 @@ Se tudo ocorreu bem o projeto já esta estartado com sucesso!!
 ```sh
 http://localhost:3007/api#/
 ```
+
 ## Visualizar a documentação das Rotas <br></br>
 
 ✔️ Sobre as rotas do backend,podem ser testadas pela aplicação Insomnia ou Postman
 
 1- Consulta dados meteorológicos e salva no banco de Dados:
+
 ✅Metodo GET
+
+```sh
 http://localhost:3007/orpen/weather
+```
+
 Parâmetros- (city) e (country) são obrigatórios do tipo:Headeres
 
 2- Consulta o historico de dados meteorológicos pesquisados na rota anterior:
+
 ✅Metodo GET
 
+```sh
 http://localhost:3007/orpen/history
+```
 
 3- Consulta o historico de dados meteorológicos porém com paginação e filtro,somente dados não deletados
 
 ✅Metodo GET
 
+```sh
 http://localhost:3007/orpen/history/pagination
+```
 
 Parâmetros-page(number-ex:1),limit(number-ex:10),filter( Object-ex{"city":"manaus"})
 
 4-Edição de dados consultados:
+
 ✅Metodo PATCH
 
+```sh
 http://localhost:3007/orpen/id/:_id
+```
 
 5-Exclusão de dados consultados mudando o delete de false para true:
-✅Metodo Delete
-http://localhost:3007/orpen/id/:_id  
 
+✅Metodo Delete
+
+```sh
+http://localhost:3007/orpen/id/:_id  
+```
 
 ## Opcional Instalação e configurações de pacotes <br></br>
 
