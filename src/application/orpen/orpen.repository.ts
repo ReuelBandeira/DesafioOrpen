@@ -4,10 +4,6 @@ import { Model } from 'mongoose'
 import { EntityRepository } from '../repository/entity.repository'
 import { Orpen, OrpenDocument } from './schemas/orpen.schema'
 
-
-
-
-
 @Injectable()
 export class OrpenRepository extends EntityRepository<OrpenDocument> {
   constructor(

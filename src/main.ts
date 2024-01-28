@@ -11,8 +11,6 @@ dotenv.config({ path: resolve(__dirname, '../.env') })
 export const appConfig = {
   port: process.env.PORT || 3002,
   urlDev: process.env.URL_DEV || `http://localhost:${process.env.PORT}`,
-  urlHomol: process.env.URL_HOMOL || `http://localhost:${process.env.PORT}`,
-  urlProd: process.env.URL_PROD || `http://localhost:${process.env.PORT}`,
   swaggerTheme: process.env.SWAGGER_THEME || 'default',
   databaseURL: process.env.DATABASE_URL || 'mongodb://localhost:27017',
   databaseName: process.env.DATABASE_NAME || 'name'
@@ -26,8 +24,6 @@ async function bootstrap() {
     .setDescription('OpenWeatherMap API Documentation')
     .setVersion('1.0.0')
     .addServer(appConfig.urlDev)
-    .addServer(appConfig.urlHomol)
-    .addServer(appConfig.urlProd)
     .build()
 
   const document = SwaggerModule.createDocument(app, config)

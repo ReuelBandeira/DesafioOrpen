@@ -1,23 +1,16 @@
 version: '3.7'
 
 services:
-  dev:
-    container_name: training-service-dev
-    image: training-service-dev:1.0.0
-    build: 
+  app:
+    container_name: orpen-service
+    build:
       context: .
-      target: development
-      dockerfile: ./Dockerfile
-    command: npm run start:debug
+    command: npm run start:prod
     ports:
       - 3007:3007
     networks:
-      - kong-net
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    restart: unless-stopped
+      - backend
+
 networks:
-  kong-net:
-    name: kong-net
+  backend:
     driver: bridge

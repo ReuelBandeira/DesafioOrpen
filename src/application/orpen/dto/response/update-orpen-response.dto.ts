@@ -42,6 +42,14 @@ export class UpdateOrpenResponseDto {
 
   @ApiProperty({
     required: false,
+    name: 'requestDate',
+    type: 'date',
+    example: '2023-09-26T03:50:55.407Z'
+  })
+  requestDate: Date
+
+  @ApiProperty({
+    required: false,
     name: 'createdBy',
     type: 'string',
     example: 'admin'

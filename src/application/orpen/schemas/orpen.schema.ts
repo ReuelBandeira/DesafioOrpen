@@ -18,6 +18,9 @@ export class Orpen {
   weatherData: object;
 
   @Prop()
+  requestDate?: Date
+
+  @Prop()
   updatedAt?: Date
 
   @Prop()
@@ -35,11 +38,15 @@ export class Orpen {
   constructor(
     city: string,
     country: string,
+    weatherData: object,
+    requestDate: Date,
     _id?: string,
 
   ) {
     this.city = city
     this.country = country
+    this.weatherData= weatherData
+    this.requestDate= requestDate
     this._id = _id
 
   }

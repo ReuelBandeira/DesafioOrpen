@@ -1,39 +1,20 @@
-# Install and Build the Code.
-FROM node:18 AS builder
+# Use a imagem do Node como base
+FROM node:20-alpine
 
+# Crie o diretório de trabalho
 WORKDIR /usr/src/app
 
+# Copie os arquivos de package.json e package-lock.json primeiro
 COPY package*.json ./
 
-RUN npm install glob rimraf
+# Instale as dependências
+RUN npm install --production
 
-RUN npm install
-
+# Copie o restante dos arquivos
 COPY . .
 
-RUN npm run build
+# Exponha a porta necessária
+EXPOSE 3007
 
-# Development image
-FROM node:18-alpine AS development
-
-WORKDIR /usr/src/app
-
-COPY . .
-
-COPY --from=builder /usr/src/app/node_modules ./node_modules
-
-# Production image
-FROM node:18-alpine as production
-
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-
-RUN npm install --omit=dev
-
-COPY --from=builder /usr/src/app/dist ./dist
-
+# Comando padrão para iniciar o aplicativo
 CMD ["node", "dist/main"]

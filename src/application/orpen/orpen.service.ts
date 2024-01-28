@@ -50,7 +50,7 @@ export class OrpenService {
         return {
           city: item.name,
           country: item.sys.country,
-          // requestDate: new Date(item.dt * 1000).toISOString(),
+          requestDate: new Date(item.dt * 1000).toISOString(),
           weatherData: {
             id: item.weather[0].id,
             main: item.weather[0].main,

@@ -42,7 +42,9 @@ export class OrpenController {
             const createOrpen={
                 city:results.data[0].city,
                 country:results.data[0].country,
-                weatherData:results.data[0].weatherData
+                weatherData:results.data[0].weatherData,
+                requestDate:results.data[0].requestDate,
+
             }
 
             const resultCreate=await this.orpenService.create(

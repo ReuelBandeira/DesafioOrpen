@@ -34,7 +34,7 @@
 
 ## Clone o Projeto para o ambiente local <br></br>
 
-Para clonagem do projeto:
+✔️ Para clonagem do projeto:
 
 ```sh
 git clone https://github.com/ReuelBandeira/DesafioOrpen.git
@@ -45,10 +45,13 @@ Adicione usuário e senha do git para clonar o repositório.
 
 ### Sobre o .env <br></br>
 
- -  Seu arquivo .env já esta configurado e esse acesso ao banco de dados mongodb é um serviço online criado para o projeto;
+ ✔️ Seu arquivo .env já esta configurado e esse acesso ao banco de dados mongodb é um serviço online criado para o projeto;
 
 ------------------------------------------------
 ## Inicializar com docker <br></br>
+✔️ É preciso ter instalado  o docker e o Docker-compose, recomendações:
+  Docker versão 24.0.2 LTS (ou versão superior LTS)
+  Docker-compose versão 1.29.2 LTS (ou versão superior LTS)
 
 Na raiz do backend você deve executar :
 
@@ -71,13 +74,44 @@ Se tudo ocorreu bem o projeto já esta estartado com sucesso!!
 
 ## Visualizar a documentação das Rotas <br></br>
 
-Você pode acessar em seu navegador após iniciar o projeto, as documentações do Swagger em:
+✔️ Você pode acessar em seu navegador após iniciar o projeto, as documentações do Swagger em:
 
 ```sh
 http://localhost:3007/api#/
 ```
+## Visualizar a documentação das Rotas <br></br>
 
-## Instalação e configurações de pacotes <br></br>
+✔️ Sobre as rotas do backend,podem ser testadas pela aplicação Insomnia ou Postman
+
+1- Consulta dados meteorológicos e salva no banco de Dados:
+✅Metodo GET
+http://localhost:3007/orpen/weather
+Parâmetros- (city) e (country) são obrigatórios do tipo:Headeres
+
+2- Consulta o historico de dados meteorológicos pesquisados na rota anterior:
+✅Metodo GET
+
+http://localhost:3007/orpen/history
+
+3- Consulta o historico de dados meteorológicos porém com paginação e filtro,somente dados não deletados
+
+✅Metodo GET
+
+http://localhost:3007/orpen/history/pagination
+
+Parâmetros-page(number-ex:1),limit(number-ex:10),filter( Object-ex{"city":"manaus"})
+
+4-Edição de dados consultados:
+✅Metodo PATCH
+
+http://localhost:3007/orpen/id/:_id
+
+5-Exclusão de dados consultados mudando o delete de false para true:
+✅Metodo Delete
+http://localhost:3007/orpen/id/:_id  
+
+
+## Opcional Instalação e configurações de pacotes <br></br>
 
 Caso deseje estartar sem o docker, no diretório do projeto execute os seguintes comandos para instalar os pacotes
 
