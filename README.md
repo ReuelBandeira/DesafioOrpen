@@ -127,13 +127,11 @@ Parâmetros:
 {
 			"city": "Gotham",
 			"country": "BR",
-			"weatherData": 
-      {
-				"id": 1000,
+			"weatherData": {
+        "id": 1000,
 				"main": "Clouds",
 				"description": "broken clouds",
-				"icon": "04d"
-			}
+				"icon": "04d"}
 }
 ```
 
