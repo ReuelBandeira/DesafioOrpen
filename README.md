@@ -82,7 +82,8 @@ http://localhost:3007/api#/
 
 ## Testes das Rotas <br></br>
 
-✔️ Sobre as rotas do backend,podem ser testadas pela aplicação Insomnia ou Postman
+✔️ Sobre as rotas do backend,podem ser testadas pela aplicação Insomnia ou Postman;
+✔️ Caso utilize o Insomnia, na raiz do projeto dentro da pasta Insomnia tem o arquivo (rotas_desafio_orpen.json), que pode ser importado no insomnia;
 
 1- Consulta dados meteorológicos e salva no banco de Dados:
 
@@ -110,7 +111,7 @@ http://localhost:3007/orpen/history
 http://localhost:3007/orpen/history/pagination
 ```
 
-Parâmetros-page(number-ex:1),limit(number-ex:10),filter( Object-ex{"city":"manaus"})
+Parâmetros-page(number-ex:1),limit(number-ex:10),filter( Object-ex:{"city":"manaus"})
 
 4-Edição de dados consultados:
 
