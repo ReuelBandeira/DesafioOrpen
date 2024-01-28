@@ -121,6 +121,22 @@ Parâmetros-page(number-ex:1),limit(number-ex:10),filter( Object-ex:{"city":"man
 http://localhost:3007/orpen/id/:_id
 ```
 
+Parâmetros:
+
+```sh
+{
+			"city": "Gotham",
+			"country": "BR",
+			"weatherData": 
+      {
+				"id": 1000,
+				"main": "Clouds",
+				"description": "broken clouds",
+				"icon": "04d"
+			}
+}
+```
+
 5-Exclusão de dados consultados mudando o delete de false para true:
 
 ✅Metodo Delete
