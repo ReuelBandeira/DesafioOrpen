@@ -16,7 +16,7 @@ import { ValidPagination } from '../utils/validPagination'
 import { ValidFilter } from '../utils/validFilter'
 import { deleteApiDecorator,findApiDecorator,listApiDecorator, updateApiDecorator } from './docs'
 import { UpdateOrpenDto } from './dto/update-orpen.dto'
-import { buildPDF } from 'src/pdfkit'
+import { buildPDF } from './pdf/pdfkit'
 
 
 @Controller('orpen')
@@ -122,14 +122,32 @@ export class OrpenController {
         "Content-Type": "application/pdf",
         "Content-Disposition": "attachment; filename=teste.pdf",
       });
-    
+
+      let teste="teste de texto"
+
+      let results = [
+        {
+            "_id": "a1d758c9-b6f8-49a6-a386-89f5152bcd8a",
+            "codigo": "120688",
+            "posto": "posto de teste",
+            "quantidade": "501",
+            "descricao": "teste descricao",
+            "observacao": "teste dobs",
+            "updatedBy": "admin",
+            "createdBy": "admin",
+            "createdAt": "2024-02-02T17:29:18.771Z",
+            "updatedAt": "2024-02-02T17:29:18.771Z",
+            "__v": 0
+        }
+      ];   
+           
       buildPDF(
+        teste,
+        results,
         (data) => stream.write(data),
         () => stream.end()
       );
     }
-
-   
 
 }
 
