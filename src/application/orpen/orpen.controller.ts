@@ -16,6 +16,7 @@ import { ValidPagination } from '../utils/validPagination'
 import { ValidFilter } from '../utils/validFilter'
 import { deleteApiDecorator,findApiDecorator,listApiDecorator, updateApiDecorator } from './docs'
 import { UpdateOrpenDto } from './dto/update-orpen.dto'
+import { buildPDF } from 'src/pdfkit'
 
 
 @Controller('orpen')
@@ -114,6 +115,20 @@ export class OrpenController {
         return ErrorHandler.errorResponse(res, error)
         }
     }
+
+    @Get('/generate-pdf')
+    async generatePdf(@Res() res: Response) {
+      const stream = res.writeHead(200, {
+        "Content-Type": "application/pdf",
+        "Content-Disposition": "attachment; filename=teste.pdf",
+      });
+    
+      buildPDF(
+        (data) => stream.write(data),
+        () => stream.end()
+      );
+    }
+
    
 
 }

@@ -50,6 +50,7 @@
     "nest-winston": "^1.8.0",
     "pandas-js": "^0.2.4",
     "path": "^0.12.7",
+    "pdfkit-table": "^0.1.99",
     "prom-client": "^14.1.1",
     "reflect-metadata": "^0.1.13",
     "response-time": "^2.3.2",
